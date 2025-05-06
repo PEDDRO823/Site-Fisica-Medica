@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhysiMed | Portal de Física Médica</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin-top: 10px;
+        }
+        
+        #news .card-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        #topics .icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgba(52, 152, 219, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        #experts .expert-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+        }
+        
+        .close {
+            color: white;
+        }
+        
+        .news-item {
+            transition: all 0.3s ease;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background: var(--primary-color);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-year {
+            background: var(--primary-color);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -40px;
+            z-index: 1;
+        }
+        
+        .glossary-term {
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
+        
+        .bg-light-blue {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .counter-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        
+        .counter-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .counter-label {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        #back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<header>
+<body data-bs-spy="scroll" data-bs-target="#navbarMain">
+    <!-- Botão de voltar ao topo -->
+    <div id="back-to-top" onclick="topFunction()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="navbarMain">
+        <div class="container">
+            <a class="navbar-brand" href="#">PhysiMed</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#areas">Áreas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#research">Pesquisas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">Notícias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Física Médica em Ação</h1>
+            <p class="mb-4">Explorando a fronteira entre a física e a medicina no diagnóstico e tratamento de doenças</p>
+            <div>
+                <a href="#areas" class="btn btn-primary me-2">Explorar Áreas</a>
+                <a href="#news" class="btn btn-outline-light">Últimas Notícias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="/api/placeholder/600/400" alt="Física Médica" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">O que é Física Médica?</h2>
+                    <p>A Física Médica é a aplicação de conceitos, métodos e técnicas da física para a prevenção, diagnóstico e tratamento de doenças. Ela desempenha um papel crucial na área da saúde, especialmente em modalidades como radiologia, medicina nuclear e radioterapia.</p>
+                    <p>Os físicos médicos trabalham em estreita colaboração com médicos e outros profissionais de saúde para garantir o uso seguro e eficaz da radiação e de outras tecnologias físicas na medicina.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-radiation me-2 text-primary"></i>
+                                <span>Tecnologias avançadas de imagem</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-microscope me-2 text-primary"></i>
+                                <span>Pesquisa de ponta</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-heartbeat me-2 text-primary"></i>
+                                <span>Tratamentos inovadores</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-shield-alt me-2 text-primary"></i>
+                                <span>Proteção radiológica</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter -->
+    <section class="bg-light-blue py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter-value" id="counter1">75</div>
+                        <div class="counter-label">Anos de Avanços</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter-value" id="counter2">3500</div>
+                        <div class="counter-label">Físicos Médicos no Brasil</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter-value" id="counter3">15</div>
+                        <div class="counter-label">Milhões de Exames/Ano</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter-value" id="counter4">30</div>
+                        <div class="counter-label">Técnicas de Tratamento</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas Section -->
+    <section id="areas" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Principais Áreas de Atuação</h2>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-x-ray"></i>
+                            </div>
+                            <h3 class="card-title">Radiologia</h3>
+                            <p class="card-text">Estuda e aplica técnicas de imagem diagnóstica como raios-X, tomografia computadorizada, ressonância magnética e ultrassom para visualizar estruturas internas do corpo humano e identificar doenças ou lesões.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#radiologyModal">Saiba Mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <h3 class="card-title">Medicina Nuclear</h3>
+                            <p class="card-text">Utiliza pequenas quantidades de materiais radioativos (radiofármacos) para diagnosticar e tratar doenças. Inclui técnicas como PET/CT, SPECT e terapias com radioisótopos para tratamento de câncer.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#nuclearModal">Saiba Mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <h3 class="card-title">Pesquisa em Câncer</h3>
+                            <p class="card-text">Desenvolvimento de novas técnicas de diagnóstico precoce e tratamentos mais eficazes e menos invasivos para diferentes tipos de câncer, utilizando princípios da física como radiação, nanopartículas e ultrassom.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cancerModal">Saiba Mais</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modais de Informações -->
+    <!-- Modal Radiologia -->
+    <div class="modal fade" id="radiologyModal" tabindex="-1" aria-labelledby="radiologyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="radiologyModalLabel">Radiologia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/api/placeholder/800/400" alt="Radiologia" class="img-fluid rounded mb-4">
+                    <h4>O que é Radiologia?</h4>
+                    <p>A Radiologia é uma especialidade médica que utiliza radiação para visualizar estruturas internas do corpo humano de forma não invasiva. O físico médico é fundamental para garantir que os equipamentos estejam calibrados corretamente e que as doses de radiação sejam otimizadas.</p>
+                    
+                    <h4>Principais técnicas de imagem:</h4>
+                    <ul>
+                        <li><strong>Raios-X convencional:</strong> Produz imagens bidimensionais de estruturas ósseas e algumas partes moles.</li>
+                        <li><strong>Mamografia:</strong> Técnica específica de raios-X para detecção de alterações no tecido mamário.</li>
+                        <li><strong>Tomografia Computadorizada (TC):</strong> Utiliza raios-X e computadores para criar imagens tridimensionais detalhadas dos órgãos e estruturas internas.</li>
+                        <li><strong>Ressonância Magnética (RM):</strong> Utiliza campos magnéticos potentes e pulsos de radiofrequência para gerar imagens de alta resolução sem utilizar radiação ionizante.</li>
+                        <li><strong>Ultrassonografia:</strong> Utiliza ondas sonoras de alta frequência para produzir imagens em tempo real dos órgãos internos e do fluxo sanguíneo.</li>
+                    </ul>
+                    
+                    <h4>Papel do Físico Médico em Radiologia</h4>
+                    <p>Os físicos médicos na radiologia são responsáveis por:</p>
+                    <ul>
+                        <li>Garantir a qualidade das imagens diagnósticas</li>
+                        <li>Minimizar a exposição à radiação dos pacientes e profissionais</li>
+                        <li>Calibrar e realizar manutenção preventiva de equipamentos</li>
+                        <li>Desenvolver novos protocolos de imagem</li>
+                        <li>Treinar profissionais em proteção radiológica</li>
+                        <li>Supervisionar o cumprimento das normas de segurança</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Medicina Nuclear -->
+    <div class="modal fade" id="nuclearModal" tabindex="-1" aria-labelledby="nuclearModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nuclearModalLabel">Medicina Nuclear</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/api/placeholder/800/400" alt="Medicina Nuclear" class="img-fluid rounded mb-4">
+                    <h4>O que é Medicina Nuclear?</h4>
+                    <p>A Medicina Nuclear é uma especialidade que utiliza pequenas quantidades de material radioativo (radiofármacos) para diagnosticar e tratar diversas doenças. Difere da radiologia convencional pois detecta a radiação emitida pelo próprio paciente após a administração do radiofármaco.</p>
+                    
+                    <h4>Principais técnicas:</h4>
+                    <ul>
+                        <li><strong>Cintilografia:</strong> Mapeamento da distribuição do radiofármaco nos órgãos e tecidos.</li>
+                        <li><strong>SPECT (Tomografia por Emissão de Fóton Único):</strong> Proporciona imagens tridimensionais da distribuição do radiofármaco.</li>
+                        <li><strong>PET (Tomografia por Emissão de Pósitrons):</strong> Utiliza radiofármacos marcados com isótopos emissores de pósitrons, como o 18F-FDG, para mapear processos metabólicos.</li>
+                        <li><strong>Terapia com radioisótopos:</strong> Utiliza radionuclídeos para tratamento de doenças como câncer de tireoide, tumores neuroendócrinos e metástases ósseas.</li>
+                    </ul>
+                    
+                    <h4>Papel do Físico Médico em Medicina Nuclear</h4>
+                    <p>Os físicos médicos na medicina nuclear são responsáveis por:</p>
+                    <ul>
+                        <li>Controle de qualidade dos radiofármacos e equipamentos</li>
+                        <li>Cálculo de doses para diagnóstico e terapia</li>
+                        <li>Proteção radiológica de pacientes e profissionais</li>
+                        <li>Garantia da qualidade das imagens</li>
+                        <li>Desenvolvimento de novos protocolos de exames</li>
+                        <li>Gerenciamento de rejeitos radioativos</li>
+                        <li>Supervisão do cumprimento das normas de segurança</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Pesquisa em Câncer -->
+    <div class="modal fade" id="cancerModal" tabindex="-1" aria-labelledby="cancerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cancerModalLabel">Pesquisa em Câncer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/api/placeholder/800/400" alt="Pesquisa em Câncer" class="img-fluid rounded mb-4">
+                    <h4>Contribuições da Física Médica na Pesquisa do Câncer</h4>
+                    <p>A Física Médica tem contribuído de forma significativa para o desenvolvimento de novas abordagens no diagnóstico precoce e tratamento do câncer, melhorando as taxas de sobrevida e qualidade de vida dos pacientes.</p>
+                    
+                    <h4>Áreas de pesquisa:</h4>
+                    <ul>
+                        <li><strong>Radioterapia avançada:</strong> Desenvolvimento de técnicas como IMRT (Radioterapia de Intensidade Modulada), VMAT (Arcoterapia Volumétrica Modulada), Radiocirurgia e Terapia com Prótons que permitem doses mais precisas no tumor e minimizam danos aos tecidos saudáveis.</li>
+                        <li><strong>Biomarcadores para imagem molecular:</strong> Criação de novos radiofármacos para detecção precoce e monitoramento da resposta ao tratamento.</li>
+                        <li><strong>Hipertermia:</strong> Uso de ultrassom focado de alta intensidade (HIFU) para elevar a temperatura do tumor e aumentar sua sensibilidade à radiação e quimioterapia.</li>
+                        <li><strong>Nanopartículas:</strong> Desenvolvimento de nanopartículas que podem ser direcionadas a células tumorais para diagnóstico por imagem e liberação controlada de medicamentos.</li>
+                        <li><strong>Fototerapia dinâmica:</strong> Uso de fotossensibilizadores e luz para gerar espécies reativas de oxigênio que destroem células cancerígenas.</li>
+                        <li><strong>Inteligência artificial:</strong> Aplicação de IA para análise de imagens médicas, planejamento de tratamento e previsão de respostas ao tratamento.</li>
+                    </ul>
+                    
+                    <h4>Desafios e perspectivas futuras</h4>
+                    <p>Entre os desafios atuais estão o desenvolvimento de terapias mais personalizadas, redução de custos para ampliar o acesso aos tratamentos avançados e integração de múltiplas modalidades de tratamento. A física médica continua a buscar soluções inovadoras para esses desafios, trabalhando em colaboração com outras disciplinas para revolucionar o cuidado ao paciente com câncer.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Section -->
+    <section id="research" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Pesquisas Inovadoras</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/600/300" class="card-img-top" alt="Pesquisa inovadora">
+                        <div class="card-body">
+                            <h4 class="card-title">Terapia com Prótons</h4>
+                            <p class="card-text">A terapia com prótons representa um avanço significativo no tratamento do câncer, permitindo uma entrega mais precisa da radiação ao tumor enquanto minimiza os danos aos tecidos saudáveis circundantes. Essa tecnologia é particularmente valiosa para tumores localizados próximos a órgãos críticos e para tratamentos pediátricos.</p>
+                            <p class="text-muted">Aplicações: Tumores cerebrais, tumores pediátricos, cânceres da base do crânio, tumores oculares, e tumores próximos à coluna vertebral.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/600/300" class="card-img-top" alt="Avanço tecnológico">
+                        <div class="card-body">
+                            <h4 class="card-title">Teranósticos em Medicina Nuclear</h4>
+                            <p class="card-text">Os teranósticos representam um novo paradigma no tratamento do câncer, combinando diagnóstico e terapia em uma única abordagem. Esta metodologia utiliza os mesmos radiofármacos ou moléculas semelhantes tanto para visualizar o tumor (diagnóstico) quanto para entregar tratamento direcionado (terapia).</p>
+                            <p class="text-muted">Aplicações: Tumores neuroendócrinos, câncer de próstata metastático, e outros tipos de câncer com receptores específicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Nanopartículas Direcionadas</h4>
+                            <p class="card-text">Desenvolvimento de nanopartículas que podem ser direcionadas especificamente para células tumorais, permitindo diagnóstico mais preciso e tratamentos personalizados, reduzindo efeitos colaterais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Imagem Multimodal</h4>
+                            <p class="card-text">Integração de diferentes modalidades de imagem (PET/CT, PET/MRI) para obter informações anatômicas e funcionais simultaneamente, melhorando a detecção precoce e planejamento de tratamento.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Radioterapia Guiada por Imagem</h4>
+                            <p class="card-text">Uso de imagens em tempo real durante o tratamento para direcionar com precisão a radiação, compensando movimentos do paciente e mudanças na anatomia tumoral.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">História da Física Médica</h2>
+            <div class="timeline">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1895</div>
+                            <div class="timeline-content">
+                                <h4>Descoberta dos Raios-X</h4>
+                                <p>Wilhelm Conrad Röntgen descobre os raios-X, revolucionando a medicina ao permitir visualizar o interior do corpo humano sem cirurgia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1898</div>
+                            <div class="timeline-content">
+                                <h4>Descoberta do Rádio</h4>
+                                <p>Marie e Pierre Curie descobrem o elemento rádio, iniciando o uso de radioisótopos em medicina.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1950</div>
+                            <div class="timeline-content">
+                                <h4>Aceleradores Lineares</h4>
+                                <p>Introdução dos aceleradores lineares para radioterapia, permitindo tratamentos mais precisos e eficazes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1972</div>
+                            <div class="timeline-content">
+                                <h4>Tomografia Computadorizada</h4>
+                                <p>Godfrey Hounsfield e Allan Cormack desenvolvem a TC, revolucionando o diagnóstico por imagem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1990</div>
+                            <div class="timeline-content">
+                                <h4>IMRT</h4>
+                                <p>Desenvolvimento da Radioterapia de Intensidade Modulada, permitindo ajustar a dose de radiação conforme o formato do tumor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2000</div>
+                            <div class="timeline-content">
+                                <h4>PET/CT</h4>
+                                <p>Integração da Tomografia por Emissão de Pósitrons com a Tomografia Computadorizada, combinando informações metabólicas e anatômicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020</div>
+                            <div class="timeline-content">
+                                <h4>IA em Física Médica</h4>
+                                <p>Uso crescente de Inteligência Artificial para análise de imagens, planejamento de tratamento e previsão de resultados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Últimas Notícias</h2>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card news-item h-100">
+                        <img src="/api/placeholder/400/200" class="card-img-top" alt="Notícia 1">
+                        <div class="card-body">
+                            <span class="card-date">29 de Abril, 2025</span>
+                            <h4 class="card-title">Novo acelerador de prótons inaugurado no Brasil</h4>
+                            <p class="card-text">Primeiro centro de terapia com prótons da América Latina começa a operar, trazendo esperança para pacientes com tumores de difícil acesso.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card news-item h-100">
+                        <img src="/api/placeholder/400/200" class="card-img-top" alt="Notícia 2">
+                        <div class="card-body">
+                            <span class="card-date">25 de Abril, 2025</span>
+                            <h4 class="card-title">Algoritmo de IA melhora detecção precoce de câncer</h4>
+                            <p class="card-text">Nova ferramenta baseada em inteligência artificial aumenta em 40% a precisão na detecção de pequenas lesões cancerígenas em exames de imagem.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card news-item h-100">
+                        <img src="/api/placeholder/400/200" class="card-img-top" alt="Notícia 3">
+                        <div class="card-body">
+                            <span class="card-date">21 de Abril, 2025</span>
+                            <h4 class="card-title">Congresso Internacional de Física Médica</h4>
+                            <p class="card-text">Evento reunirá especialistas de todo o mundo para discutir os avanços mais recentes em diagnóstico e tratamento de doenças.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">Ver todas as notícias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section id="topics" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Tópicos de Interesse</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="icon-circle">
+                        <i class="fas fa-shield-alt fa-2x text-primary"></i>
+                    </div>
+                    <h4>Proteção Radiológica</h4>
+                    <p>Estudo dos efeitos biológicos da radiação e desenvolvimento de medidas para proteger pacientes e profissionais durante procedimentos médicos que utilizam radiação.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-circle">
+                        <i class="fas fa-chart-line fa-2x text-primary"></i>
+                    </div>
+                    <h4>Dosimetria</h4>
+                    <p>Medição e cálculo da quantidade de radiação absorvida pelos tecidos, fundamental para garantir tratamentos eficazes e seguros em radioterapia.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-circle">
+                        <i class="fas fa-laptop-medical fa-2x text-primary"></i>
+                    </div>
+                    <h4>Informática Médica</h4>
+                    <p>Desenvolvimento e aplicação de sistemas computacionais para processamento de imagens médicas, simulações de tratamentos e gerenciamento de dados clínicos.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-circle">
+                        <i class="fas fa-microscope fa-2x text-primary"></i>
+                    </div>
+                    <h4>Nanotecnologia em Medicina</h4>
+                    <p>Criação de nanomateriais e dispositivos em escala nanométrica para diagnóstico precoce e tratamento direcionado de doenças, especialmente câncer.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-circle">
+                        <i class="fas fa-brain fa-2x text-primary"></i>
+                    </div>
+                    <h4>Neuroimagem</h4>
+                    <p>Técnicas avançadas para visualizar a estrutura, função e fisiologia do cérebro e sistema nervoso, auxiliando no diagnóstico e tratamento de doenças neurológicas.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="icon-circle">
+                        <i class="fas fa-robot fa-2x text-primary"></i>
+                    </div>
+                    <h4>Inteligência Artificial</h4>
+                    <p>Aplicação de algoritmos de aprendizado de máquina e redes neurais para análise automatizada de imagens médicas, auxílio ao diagnóstico e planejamento de tratamentos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experts Section -->
+    <section id="experts" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Especialistas Destacados</h2>
+            <div class="row">
+                <div class="col-md-4 text-center mb-4">
+                    <img src="/api/placeholder/200/200" alt="Especialista 1" class="expert-img">
+                    <h4>Dra. Sofia Mendes</h4>
+                    <p class="text-muted">Especialista em Radiologia Diagnóstica</p>
+                    <p>Pesquisadora com foco em desenvolvimento de novos métodos de imagem para detecção precoce de câncer.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <img src="/api/placeholder/200/200" alt="Especialista 2" class="expert-img">
+                    <h4>Dr. Paulo Guimarães</h4>
+                    <p class="text-muted">Físico Médico em Medicina Nuclear</p>
+                    <p>Pioneiro em estudos sobre teranósticos e desenvolvimento de novos radiofármacos para diagnóstico e terapia.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <img src="/api/placeholder/200/200" alt="Especialista 3" class="expert-img">
+                    <h4>Dra. Luísa Oliveira</h4>
+                    <p class="text-muted">Especialista em Radioterapia</p>
+                    <p>Desenvolve pesquisas em tratamentos personalizados de câncer combinando técnicas avançadas de radiação com inteligência artificial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glossary Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Glossário</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <h5 class="glossary-term" data-bs-toggle="collapse" data-bs-target="#term1">Radiação Ionizante</h5>
+                        <div class="collapse" id="term1">
+                            <p class="ps-3 border-start border-primary">Tipo de radiação com energia suficiente para remover elétrons de átomos, criando íons. Inclui raios-X, raios gama e algumas partículas como prótons e nêutrons.</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="glossary-term" data-bs-toggle="collapse" data-bs-target="#term2">Radiofármaco</h5>
+                        <div class="collapse" id="term2">
+                            <p class="ps-3 border-start border-primary">Composto que contém um isótopo radioativo utilizado para diagnóstico ou tratamento em medicina nuclear.</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="glossary-term" data-bs-toggle="collapse" data-bs-target="#term3">Dose Absorvida</h5>
+                        <div class="collapse" id="term3">
+                            <p class="ps-3 border-start border-primary">Quantidade de energia depositada pela radiação por unidade de massa do tecido, medida em Gray (Gy).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <h5 class="glossary-term" data-bs-toggle="collapse" data-bs-target="#term4">Tomografia</h5>
+                        <div class="collapse" id="term4">
+                            <p class="ps-3 border-start border-primary">Técnica de imagem que permite visualizar uma "fatia" ou seção do corpo, eliminando a sobreposição de estruturas que ocorre em imagens planas.</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="glossary-term" data-bs-toggle="collapse" data-bs-target="#term5">Braquiterapia</h5>
+                        <div class="collapse" id="term5">
+                            <p class="ps-3 border-start border-primary">Forma de radioterapia onde fontes radioativas seladas são colocadas dentro ou próximas ao tumor, permitindo alta dose no alvo com menor exposição dos tecidos saudáveis.</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="glossary-term" data-bs-toggle="collapse" data-bs-target="#term6">Fantoma</h5>
+                        <div class="collapse" id="term6">
+                            <p class="ps-3 border-start border-primary">Objeto que simula as características físicas e de absorção de radiação do corpo humano, utilizado para calibração de equipamentos e treinamento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Entre em Contato</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="mb-4">Envie sua Mensagem</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Seu nome">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="seu@email.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Assunto</label>
+                                    <input type="text" class="form-control" id="subject" placeholder="Assunto da mensagem">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="message" rows="4" placeholder="Sua mensagem"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="mb-4">Informações de Contato</h4>
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Endereço</h5>
+                                    <p>Av. da Ciência, 1000<br>Instituto de Física Médica<br>São Paulo - SP, Brasil</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Email</h5>
+                                    <p>contato@physimed.org.br<br>suporte@physimed.org.br</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Telefone</h5>
+                                    <p>+55 (11) 3456-7890<br>+55 (11) 9876-5432</p>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h5>Redes Sociais</h5>
+                                <div class="mt-3">
+                                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3>Assine nossa Newsletter</h3>
+                    <p>Receba atualizações sobre os últimos avanços em Física Médica diretamente em seu email.</p>
+                </div>
+                <div class="col-lg-6">
+                    <form class="row g-3">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg" placeholder="Seu email">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-light btn-lg w-100">Assinar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="footer-title">PhysiMed</h4>
+                    <p>Portal dedicado à divulgação científica sobre Física Médica e suas aplicações no diagnóstico e tratamento de doenças.</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#areas">Áreas</a></li>
+                        <li><a href="#research">Pesquisas</a></li>
+                        <li><a href="#news">Notícias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">Recursos</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Publicações Científicas</a></li>
+                        <li><a href="#">Eventos e Congressos</a></li>
+                        <li><a href="#">Cursos e Capacitação</a></li>
+                        <li><a href="#">Glossário</a></li>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="footer-title">Contato</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Av. da Ciência, 1000</li>
+                        <li><i class="fas fa-envelope me-2"></i> contato@physimed.org.br</li>
+                        <li><i class="fas fa-phone me-2"></i> +55 (11) 3456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 PhysiMed - Portal de Física Médica. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0"><a href="#" class="text-white">Política de Privacidade</a> | <a href="#" class="text-white">Termos de Uso</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Script para ativar tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Animar contadores
+            animateCounters();
+            
+            // Mostrar botão de voltar ao topo quando a página rolar
+            window.onscroll = function() {scrollFunction()};
+        });
+        
+        // Função para animar contadores
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-value');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.innerText;
+                let count = 0;
+                const inc = target / speed;
+                
+                const updateCount = () => {
+                    count = count + inc;
+                    
+                    if(count < target) {
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCount();
+            });
+        }
+        
+        // Função para mostrar/esconder botão de voltar ao topo
+        function scrollFunction() {
+            var backToTopButton = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "flex";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+        
+        // Função para voltar ao topo
+        function topFunction() {
+            document.body.scrollTop = 0; // Para Safari
+            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+        }
+    </script>
+</body>
+</html>

@@ -365,7 +365,7 @@
     </nav>
 </header>
 
-    <!-- Hero Section -->
+   
     <section id="home" class="hero">
         <div class="container">
             <h1>Física Médica em Ação</h1>
@@ -377,7 +377,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    
     <section id="about" class="py-5">
         <div class="container">
             <div class="row align-items-center">
@@ -415,7 +415,7 @@
         </div>
     </section>
 
-    <!-- Stats Counter -->
+  
     <section class="bg-light-blue py-5">
         <div class="container">
             <div class="row">
@@ -447,7 +447,7 @@
         </div>
     </section>
 
-    <!-- Áreas Section -->
+    
     <section id="areas" class="py-5">
         <div class="container">
             <h2 class="text-center section-title mb-5">Principais Áreas de Atuação</h2>
@@ -492,8 +492,7 @@
         </div>
     </section>
 
-    <!-- Modais de Informações -->
-    <!-- Modal Radiologia -->
+
     <div class="modal fade" id="radiologyModal" tabindex="-1" aria-labelledby="radiologyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -533,7 +532,7 @@
         </div>
     </div>
     
-    <!-- Modal Medicina Nuclear -->
+    
     <div class="modal fade" id="nuclearModal" tabindex="-1" aria-labelledby="nuclearModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -573,7 +572,7 @@
         </div>
     </div>
     
-    <!-- Modal Pesquisa em Câncer -->
+
     <div class="modal fade" id="cancerModal" tabindex="-1" aria-labelledby="cancerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -606,7 +605,7 @@
         </div>
     </div>
 
-    <!-- Research Section -->
+    
     <section id="research" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center section-title mb-5">Pesquisas Inovadoras</h2>
@@ -662,7 +661,7 @@
         </div>
     </section>
 
-    <!-- Timeline Section -->
+   
     <section class="py-5">
         <div class="container">
             <h2 class="text-center section-title mb-5">História da Física Médica</h2>
@@ -748,7 +747,7 @@
         </div>
     </section>
 
-    <!-- News Section -->
+    
     <section id="news" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center section-title mb-5">Últimas Notícias</h2>
@@ -793,7 +792,6 @@
         </div>
     </section>
 
-    <!-- Topics Section -->
     <section id="topics" class="py-5">
         <div class="container">
             <h2 class="text-center section-title mb-5">Tópicos de Interesse</h2>
@@ -844,7 +842,6 @@
         </div>
     </section>
 
-    <!-- Experts Section -->
     <section id="experts" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center section-title mb-5">Especialistas Destacados</h2>
@@ -871,7 +868,6 @@
         </div>
     </section>
 
-    <!-- Glossary Section -->
     <section class="py-5">
         <div class="container">
             <h2 class="text-center section-title mb-5">Glossário</h2>
@@ -920,7 +916,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center section-title mb-5">Entre em Contato</h2>
@@ -993,9 +988,6 @@
         </div>
     </section>
 
-   
-
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
@@ -1050,24 +1042,23 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Script para ativar tooltips
+        
         document.addEventListener('DOMContentLoaded', function() {
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
             
-            // Animar contadores
+    
             animateCounters();
             
-            // Mostrar botão de voltar ao topo quando a página rolar
+           
             window.onscroll = function() {scrollFunction()};
         });
         
-        // Função para animar contadores
+       
         function animateCounters() {
             const counters = document.querySelectorAll('.counter-value');
             const speed = 200;
@@ -1092,7 +1083,7 @@
             });
         }
         
-        // Função para mostrar/esconder botão de voltar ao topo
+    
         function scrollFunction() {
             var backToTopButton = document.getElementById("back-to-top");
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -1102,10 +1093,10 @@
             }
         }
         
-        // Função para voltar ao topo
+        
         function topFunction() {
-            document.body.scrollTop = 0; // Para Safari
-            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0; 
         }
     </script>
 </body>

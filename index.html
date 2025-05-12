@@ -665,88 +665,205 @@
     <section class="py-5">
         <div class="container">
             <h2 class="text-center section-title mb-5">História da Física Médica</h2>
+            
+            <style>
+                /* Estilo para a linha central vertical */
+                .timeline {
+                    position: relative;
+                    padding: 20px 0;
+                }
+                
+                .timeline::before {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    background-color: #3498DB;
+                    top: 0;
+                    bottom: 0;
+                    left: 50%;
+                    margin-left: -2px;
+                    border-radius: 2px;
+                }
+                
+                /* Estilo para os itens da linha do tempo */
+                .timeline-item {
+                    margin-bottom: 50px;
+                    position: relative;
+                }
+                
+                /* Estilo para os círculos nos pontos da linha do tempo */
+                .timeline-item::after {
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #3498DB;
+                    border: 4px solid #ECF0F1;
+                    border-radius: 50%;
+                    top: 15px;
+                    z-index: 1;
+                }
+                
+                /* Posicionamento dos círculos e conteúdo */
+                .timeline-left .timeline-item::after {
+                    right: -10px;
+                }
+                
+                .timeline-right .timeline-item::after {
+                    left: -10px;
+                }
+                
+                /* Estilo para o ano */
+                .timeline-year {
+                    background-color: #3498DB;
+                    color: white;
+                    font-weight: bold;
+                    padding: 5px 15px;
+                    border-radius: 20px;
+                    display: inline-block;
+                    margin-bottom: 10px;
+                }
+                
+                /* Estilo para o conteúdo */
+                .timeline-content {
+                    padding: 20px;
+                    background-color: #ECF0F1;
+                    border-radius: 5px;
+                    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s ease;
+                }
+                
+                .timeline-content:hover {
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    transform: translateY(-5px);
+                }
+                
+                .timeline-content h4 {
+                    color: #2C3E50;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                }
+                
+                /* Ajustes para visualização móvel */
+                @media (max-width: 767px) {
+                    .timeline::before {
+                        left: 40px;
+                    }
+                    
+                    .timeline-left .timeline-item::after,
+                    .timeline-right .timeline-item::after {
+                        left: 30px;
+                    }
+                    
+                    .timeline-left .timeline-content,
+                    .timeline-right .timeline-content {
+                        width: calc(100% - 90px);
+                        margin-left: 90px;
+                    }
+                }
+            </style>
+            
             <div class="timeline">
+                <!-- 1895: Descoberta dos Raios-X -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6 timeline-left">
                         <div class="timeline-item">
-                            <div class="timeline-year">1895</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">1895</div>
                                 <h4>Descoberta dos Raios-X</h4>
                                 <p>Wilhelm Conrad Röntgen descobre os raios-X, revolucionando a medicina ao permitir visualizar o interior do corpo humano sem cirurgia.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6"></div>
                 </div>
+                
+                <!-- 1898: Descoberta do Rádio -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 timeline-right">
                         <div class="timeline-item">
-                            <div class="timeline-year">1898</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">1898</div>
                                 <h4>Descoberta do Rádio</h4>
                                 <p>Marie e Pierre Curie descobrem o elemento rádio, iniciando o uso de radioisótopos em medicina.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 1950: Aceleradores Lineares -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6 timeline-left">
                         <div class="timeline-item">
-                            <div class="timeline-year">1950</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">1950</div>
                                 <h4>Aceleradores Lineares</h4>
                                 <p>Introdução dos aceleradores lineares para radioterapia, permitindo tratamentos mais precisos e eficazes.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6"></div>
                 </div>
+                
+                <!-- 1972: Tomografia Computadorizada -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 timeline-right">
                         <div class="timeline-item">
-                            <div class="timeline-year">1972</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">1972</div>
                                 <h4>Tomografia Computadorizada</h4>
                                 <p>Godfrey Hounsfield e Allan Cormack desenvolvem a TC, revolucionando o diagnóstico por imagem.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 1990: IMRT -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6 timeline-left">
                         <div class="timeline-item">
-                            <div class="timeline-year">1990</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">1990</div>
                                 <h4>IMRT</h4>
                                 <p>Desenvolvimento da Radioterapia de Intensidade Modulada, permitindo ajustar a dose de radiação conforme o formato do tumor.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6"></div>
                 </div>
+                
+                <!-- 2000: PET/CT -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 timeline-right">
                         <div class="timeline-item">
-                            <div class="timeline-year">2000</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">2000</div>
                                 <h4>PET/CT</h4>
                                 <p>Integração da Tomografia por Emissão de Pósitrons com a Tomografia Computadorizada, combinando informações metabólicas e anatômicas.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 2020: IA em Física Médica -->
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6 timeline-left">
                         <div class="timeline-item">
-                            <div class="timeline-year">2020</div>
                             <div class="timeline-content">
+                                <div class="timeline-year">2020</div>
                                 <h4>IA em Física Médica</h4>
                                 <p>Uso crescente de Inteligência Artificial para análise de imagens, planejamento de tratamento e previsão de resultados.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6"></div>
                 </div>
             </div>
         </div>
     </section>
-
     
     <section id="news" class="py-5 bg-light">
         <div class="container">
